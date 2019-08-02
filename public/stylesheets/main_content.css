@@ -1,0 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+.middle-column {
+  background-color: #8b5a2b;
+  float: left;
+  width: 59.33%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}

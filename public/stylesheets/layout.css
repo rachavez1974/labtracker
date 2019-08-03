@@ -1,55 +1,52 @@
-
-* {
-  box-sizing: border-box;
-}
-
 body {
-  font-family: Arial, Helvetica, sans-serif;
   background-color: #C0B283;
-} 
-
-.container-layout {
-  margin: 0 50px 0 50px;
+  margin: 0 auto;
+  max-width: 56em;
+  padding: 1em 0;
+}
+  
+.grid {
+  display: grid;
+  grid-template-columns: 150px auto 150px;
+  grid-gap: 1em;
 }
 
+header,
+aside,
+main-content,
+footer {
+  background: #eaeaea;
+  padding: 1em;
+}
+
+header, footer {
+  grid-column: 1 / 4;
+}
+
+/* Demo Specific Styles */
+
+.grid > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* Style the header */
 .header {
   background-color: #f6f8f9;
   padding: 20px;
+  height: auto;
+  width: auto;
   text-align: center;
   font-size: 15 px;
 }
 
-.left-column {
-  background-color: #ffb6c1;
-  float: left;
-  width: 20.33%;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
+header a {
+  color: rgb(152,173,166);
+  text-decoration: none;
 }
 
-.right-column {
-  background-color: #ffb6c1;
-  float: left;
-  width: 20.33%;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-}
-
-/* Style the footer */
-.footer {
-  background-color: #f6f8f9;
-  padding-top: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
+header a:hover {
+  color: rgb(111,127,122);
 }
 
 ul {
@@ -82,13 +79,19 @@ li a.active {
   background-color: #4CAF50;
 }
 
-/*footer icons */
-.fa {
+.footer {
+  background-color: #f6f8f9;
+  padding-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
 
-  padding: 20px;
+.fa {
+  padding: 5px;
   font-size: 30px;
-  height: 50px;
-  width: 90px;
+  height: 30px;
+  width: 50px;
   text-align: center;
   text-decoration: none;
   margin-top: 6px;
@@ -129,4 +132,23 @@ li a.active {
   color: white;
 }
 
+.fa-labtracker{
+  color: white;
+  background-color: #4CAF50;
+}
 
+
+@font-face {
+  font-family: 'Baskerville';
+  src: url(../fonts/Baskerville.ttc);
+}
+
+
+.fling-minislide {width:250px; height:300px; overflow:hidden; position:relative; }
+.fling-minislide img{ position: absolute; animation:fling-minislide 20s infinite; opacity:0; width: 100%; height: auto;}
+
+@keyframes fling-minislide {25%{opacity:1;} 40%{opacity:0;}} 
+.fling-minislide img:nth-child(4){animation-delay:0s;}
+.fling-minislide img:nth-child(3){animation-delay:5s;}
+.fling-minislide img:nth-child(2){animation-delay:10s;}
+.fling-minislide img:nth-child(1){animation-delay:15s;}

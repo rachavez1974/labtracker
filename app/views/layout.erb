@@ -5,14 +5,32 @@
     <link rel="stylesheet" href="stylesheets/layout.css" type="text/css">
   </head>
   <body>
-<div class="container-layout">
-  <%= erb :'partials/header' %>
-  <%= erb :'partials/left_column' %>
-      <%= yield %>
-  <%= erb :'partials/right_column' %>
-  <%= erb :'partials/footer' %>
+
+  <div class="grid">
+  <header>
+    <%= erb :'partials/header' %>
+  </header>
+
+  <aside class="sidebar-left">
+    <%= erb :'partials/left_column' %>
+  </aside>
+
+  <main-content>
+    <%= yield %>
+  </main-content>
+
+  <aside class="sidebar-right">
+   <%= erb :'partials/right_column' %>
+  </aside>
+  <div style="clear: both;"></div>
+  
+  <footer>
+    <%= erb :'partials/footer' %>
+  </footer>
 </div>
 
+
+  
 
 
   </body>

@@ -5,7 +5,12 @@
     <li><a href="#news">Labs</a></li>
     <li><a href="/contact">Contact</a></li>
     <li><a href="/about">About</a></li>
-    <li><a href="#about">Log In</a></li>
+    <% @logged_in = false %>
+    <% if @logged_in %>
+      <li><li><a href="#about">Log Out</a></li></li>
+    <% else %>
+      <li><a href="#about">Log In</a></li>
+   <% end %>
   </ul> 
 </div>
 

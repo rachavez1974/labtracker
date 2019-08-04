@@ -5,9 +5,9 @@
     <li><a href="#news">Labs</a></li>
     <li><a href="/contact">Contact</a></li>
     <li><a href="/about">About</a></li>
-    <% @logged_in = false %>
+    <% @logged_in = true %>
     <% if @logged_in %>
-      <li><li><a href="#about">Log Out</a></li></li>
+      <li><li><a href="#about">Account</a><%= erb :'partials/dropdown_account' %></li></li>
     <% else %>
       <li><a href="#about">Log In</a></li>
    <% end %>

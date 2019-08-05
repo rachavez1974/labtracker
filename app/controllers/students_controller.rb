@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
 
   #only hit database once per request
-  exclude_routes = %w[students/new students]
+  exclude_routes = %w[/signup students]
   before do
     @student = Student.find_by(id: get_id_from_path(request.path_info)) unless exclude_routes.include?(request.path_info)
   end
@@ -23,6 +23,18 @@ class StudentsController < ApplicationController
   
   get '/students/:id' do
     erb :'students/show'
+  end
+
+  get '/students/:id/edit' do
+    erb :'/students/edit'
+  end
+
+  patch '/students/:id' do
+    if @student.update(params[:student])
+      redirect to "/students/#{@student.id}"
+    else
+      erb :'/students/edit'
+    end
   end
 
 

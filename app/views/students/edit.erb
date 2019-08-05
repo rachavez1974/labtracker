@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/stylesheets/students/forms.css" type="text/css">
+    <title></title>
+</head>
+<body>
+    <div class="container">
+      <h3>Edit Student Here</h3>
+      <form action="/students/<%= @student.id %>" method="POST" style="border:1px solid #ccc">
+        <input id="hidden" type="hidden" name="_method" value="patch">
+        <label for="fname">Student Name</label>
+        <input type="text" id="name" name="student[name]" value="<%= @student.name %>">
+
+        <label for="user_name">User Name</label>
+        <input type="text" id="user_name" name="student[user_name]" value="<%= @student.user_name %>">
+
+        <label for="year">Current Year</label>
+        <select id="year" name="year">
+          <option value="a">Sophomore</option>
+          <option value="canada">Freshman</option>
+          <option value="usa">Junior</option>
+        </select>
+        <label for="Password">Password</label>
+        <input type="password" id="password" name="student[password]"><br>
+
+        <input type="submit" value="Submit" id="submit">
+      </form>
+    </div>
+</body>
+</html>
+

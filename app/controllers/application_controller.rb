@@ -8,7 +8,8 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     use Rack::Flash
-    
+    set :session_secret, "{SecureRandom.urlsafe_base64}"
+    set :views, Proc.new { File.join(root, "../views/") }
   end
 
   get "/" do

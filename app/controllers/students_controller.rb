@@ -37,6 +37,10 @@ class StudentsController < ApplicationController
     end
   end
 
+  delete '/students/:id' do
+    @student.destroy
+  end
+
 
   private
     def get_id_from_path(path)

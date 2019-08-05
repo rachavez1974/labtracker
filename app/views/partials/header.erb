@@ -7,7 +7,7 @@
     <li><a href="/about">About</a></li>
     <% @logged_in = true %>
     <% if @logged_in %>
-      <li><li><a href="#about">Account</a><%= erb :'partials/dropdown_account' %></li></li>
+      <li><div class="dropdown"><a href="#account">Account</a><%= erb :'partials/dropdown_account' %></div></li>
     <% else %>
       <li><a href="#about">Log In</a></li>
    <% end %>

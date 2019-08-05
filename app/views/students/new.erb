@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="stylesheets/students/forms.css" type="text/css">
+    <title></title>
+</head>
+<body>
+    <div class="container">
+      <form action="/signup" method="POST" style="border:1px solid #ccc">
+        <label for="fname">Student Name</label>
+        <input type="text" id="name" name="student[name]" placeholder="Your name..">
+
+        <label for="user_name">User Name</label>
+        <input type="text" id="user_name" name="student[user_name]" placeholder="Your email">
+
+        <label for="year">Current Year</label>
+        <select id="year" name="year">
+          <option value="a">Sophomore</option>
+          <option value="canada">Freshman</option>
+          <option value="usa">Junior</option>
+        </select>
+        <label for="Password"></label>
+        <input type="password" id="password" name="student[password]" placeholder="Enter Password" require><br>
+
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+</body>
+</html>
+

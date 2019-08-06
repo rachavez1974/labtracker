@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
       Sessions.log_in(@student, session)
       redirect to "/students/#{@student.id}"
     else
+      flash[:message] = "Wrong user name or password!"
       erb :'/sessions/new.html'
     end
   end

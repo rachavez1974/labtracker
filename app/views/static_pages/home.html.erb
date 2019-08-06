@@ -6,6 +6,9 @@
   </head>
   <body>
     <div class="jumbotron">
+      <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+      <% end %><br>
     <div class="jumbo-container">
       <h1>Welcome To Weird Science</h1><br><br>
       <% if !Sessions.is_logged_in?(session)%>

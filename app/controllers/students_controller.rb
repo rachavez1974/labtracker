@@ -6,7 +6,6 @@ class StudentsController < ApplicationController
     @student = Student.find_by(id: get_id_from_path(request.path_info)) unless exclude_routes.include?(request.path_info)
   end
 
-
   get '/signup' do
     erb :'students/new'
   end
@@ -51,4 +50,8 @@ class StudentsController < ApplicationController
         path.split('/').last.to_i
       end
     end
+
+    # def is_student_logged_in?
+    #   unless Sessions.is_logged_in?(session) 
+    # end
 end

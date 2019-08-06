@@ -7,6 +7,11 @@
 </head>
 <body>
     <div class="container">
+      <% if @errors %>
+        <% @errors.each do |key, error| %>
+          <p style="margin: 0px;"><%= key %>: <%= error %> </p>
+        <%end %>
+      <% end %>
       <form action="/signup" method="POST" style="border:1px solid #ccc">
         <label for="fname">Student Name</label>
         <input type="text" id="name" name="student[name]" placeholder="Your name..">
@@ -15,10 +20,10 @@
         <input type="text" id="user_name" name="student[user_name]" placeholder="Your email">
 
         <label for="year">Current Year</label>
-        <select id="year" name="year">
-          <option value="a">Sophomore</option>
-          <option value="canada">Freshman</option>
-          <option value="usa">Junior</option>
+        <select id="year" name="class_year">
+          <% Student.class_years.keys.to_a.each do |year| %>
+          <option value="a"><%= year %></option>
+          <% end %>
         </select>
         <label for="Password"></label>
         <input type="password" id="password" name="student[password]" placeholder="Enter Password" require><br>

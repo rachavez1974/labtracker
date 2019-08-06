@@ -7,6 +7,9 @@
 </head>
 <body>
   <form action="/login" method="POST">
+    <% if flash.has?(:message) %>
+      <%= flash[:message] %>
+    <% end %><br>
   <div class="imgcontainer">
     <img src="/images/loginavatar.jpeg" alt="Avatar" class="avatar">
   </div>

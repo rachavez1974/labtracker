@@ -5,11 +5,10 @@
     <li><div class="dropdown"><a href="#news">Labs</a><%= erb :'partials/dropdown_labs' %></div></li>
     <li><a href="/contact">Contact</a></li>
     <li><a href="/about">About</a></li>
-    <% @logged_in = true %>
-    <% if @logged_in %>
+    <% if Sessions.is_logged_in?(session)%>
       <li><div class="dropdown"><a href="#account">Account</a><%= erb :'partials/dropdown_account' %></div></li>
     <% else %>
-      <li><a href="#about">Log In</a></li>
+      <li><a href="/login">Log In</a></li>
    <% end %>
   </ul> 
 </div>

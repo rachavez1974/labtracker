@@ -8,7 +8,9 @@
     <div class="jumbotron">
     <div class="jumbo-container">
       <h1>Welcome To Weird Science</h1><br><br>
+      <% if !Sessions.is_logged_in?(session)%>
       <li><a class="active" href="/signup">Sign Up Here!</a></li>
+      <% end %>
     </div>
   </div>
   </body>

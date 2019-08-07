@@ -1,2 +1,28 @@
-<%= erb :'partials/errors' %>
-<h1>Create a lab here.</h1>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/stylesheets/labs/labdisplay.css" type="text/css">
+</head>
+<body>
+<div>
+<table>
+    <%= erb :'partials/errors' %>
+    <% @current_student.labs.each do |lab| %>
+    <tr>
+    <th>Lab's Name</th>
+    <th>Lab's Description</th>
+    <th>Lab's Teacher</th>
+    <tr>
+    <td><%= lab.name %></td>
+    <td><%= lab.description %></td>
+    <td>$100</td>
+    </tr>
+    </tr>
+  <% end %>
+</table>
+</div>  
+</body>
+</html>

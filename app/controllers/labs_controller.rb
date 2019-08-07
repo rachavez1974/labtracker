@@ -15,8 +15,7 @@ class LabsController < ApplicationController
 
   # GET: /labs
   get "/labs" do
-    if Sessions.is_logged_in?(session)
-      @labs = @current_student.labs 
+    if Sessions.is_logged_in?(session) 
       erb :"/labs/index.html"
     else
       flash[:message] = "You must be logged-in to look at your labs!"
@@ -54,17 +53,53 @@ class LabsController < ApplicationController
 
   # GET: /labs/5
   get "/labs/:id" do
-    erb :"/labs/show.html"
+    if Sessions.is_logged_in?(session)
+      if @current_student.id == @lab.student_id
+        erb :"/labs/show.html"
+      else
+        flash[:message] = "You must own this lab to see it!"
+        redirect to '/labs'
+      end
+    else
+      flash[:message] = "You must be logged-in to see labs!"
+      redirect to '/login'
+    end
   end
 
   # GET: /labs/5/edit
   get "/labs/:id/edit" do
-    erb :"/labs/edit.html"
+    if Sessions.is_logged_in?(session)
+      if @current_student.id == @lab.student_id
+        erb :"/labs/edit.html"
+      else
+        flash[:message] = "You must own this lab to edit it!"
+        redirect to '/labs'
+      end
+    else
+      flash[:message] = "You must be logged-in to edit labs!"
+      redirect to '/login'
+    end
   end
 
   # PATCH: /labs/5
   patch "/labs/:id" do
-    redirect "/labs/:id"
+    if Sessions.is_logged_in?(session)
+      if @current_student.id == @lab.student_id
+        if @lab.update(params[:lab])
+          flash[:message] = "Your lab was successfully edited!"
+          redirect "/labs/#{@lab.id}"
+        else
+          @errors = @lab.errors
+          erb :'/labs/new.html'
+        end
+      else
+        flash[:message] = "You must own this lab to edit it!"
+        redirect to '/labs'
+      end
+    else
+      flash[:message] = "You must be logged-in to edit labs!"
+      redirect to '/login'
+    end
   end
 
   # DELETE: /labs/5/delete

@@ -1,1 +1,22 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/stylesheets/students/forms.css" type="text/css">
+    <title></title>
+</head>
+<body>
+    <div class="container">
+      <%= erb :'partials/errors' %>
+      <form action="/labs/<%= @lab.id %>" method="POST" style="border:1px solid #ccc">
+        <input id="hidden" type="hidden" name="_method" value="patch">
+        <label for="labname">Lab's Name</label>
+        <input type="text" id="lab_name" name="lab[name]" value="<%= @lab.name %>">
+
+        <label for="description">Lab's Description</label>
+        <input type="text" id="lab_description" name="lab[description]" value="<%= @lab.description %>">
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+</body>
+</html>
+

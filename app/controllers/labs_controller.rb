@@ -103,8 +103,20 @@ class LabsController < ApplicationController
   end
 
   # DELETE: /labs/5/delete
-  delete "/labs/:id/delete" do
-    redirect "/labs"
+  delete "/labs/:id" do
+    if Sessions.is_logged_in?(session)
+      if @current_student.id == @lab.student_id
+        flash[:message] = "Your lab has been deleted!"
+        @lab.destroy
+        redirect "/labs"
+      else
+        flash[:message] = "You must own this lab to destroy it!"
+        redirect to '/labs'
+      end
+    else
+      flash[:message] = "You must be logged-in to delete labs!"
+      redirect to '/login'
+    end
   end
 
   private

@@ -19,7 +19,7 @@ class LabsController < ApplicationController
       erb :"/labs/index.html"
     else
       flash[:message] = "You must be logged-in to look at your labs!"
-      redirect to '/login'
+      redirect to '/login'  
     end
   end
 
@@ -101,6 +101,32 @@ class LabsController < ApplicationController
       redirect to '/login'
     end
   end
+
+  get "/search" do
+    if Sessions.is_logged_in?(session)
+      erb :'/labs/search'
+    else
+      flash[:message] = "You must be logged-in to search labs!"
+      redirect to '/login'
+    end
+  end
+
+  get '/search/lab' do
+    if Sessions.is_logged_in?(session)
+      @lab = Lab.find_by(params[:lab]) 
+        if @current_student.id == @lab.student_id
+          erb :"/labs/show.html" 
+        else
+          flash[:message] = "You must own this lab to see it!"
+          redirect to '/labs'
+        end
+    else
+      flash[:message] = "You must be logged-in to search labs!"
+      redirect to '/login'
+    end
+  end
+
+
 
   # DELETE: /labs/5/delete
   delete "/labs/:id" do

@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/stylesheets/labs/labdisplay.css" type="text/css">
+</head>
+<body>
+<div>
+<table>
+    <%= erb :'partials/errors' %>
+    <% @current_student.labs.each do |lab| %>
+    <tr>
+    <th>Lab's Name</th>
+    <th>Lab's Description</th>
+    <th>Lab's Teacher</th>
+    <tr>
+    <td><%= lab.name %></td>
+    <td><%= lab.description %></td>
+    <td>$100</td>
+    <td><a class="button" href="/labs/<%= lab.id %>/edit">Edit</a></td>
+    <td><form action='/labs/<%= lab.id %>' method='POST'>
+      <input type='hidden' name='_method' value='DELETE'/>
+    <button type='submit' class='super-sport'>Delete</button></td>
+  </tr>
+    </tr>
+    </tr>
+  <% end %>
+</table>
+</div>  
+</body>
+</html>

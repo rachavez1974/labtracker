@@ -1,0 +1,9 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %><br>
+
+<% if @errors %>
+  <% @errors.each do |key, error| %>
+    <p style="margin: 0px;"><%= key %>: <%= error %> </p>
+  <%end %>
+<% end %>

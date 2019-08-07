@@ -8,10 +8,10 @@ class StudentsController < ApplicationController
 
   get '/signup' do
     if !Sessions.is_logged_in?(session)
-      erb :'students/new'
+      erb :'/students/new'
     else
       flash[:message] = "You already have an account!"
-      redirect to '/'
+      redirect to '/labs'
     end
   end
 
@@ -19,14 +19,16 @@ class StudentsController < ApplicationController
     if !Sessions.is_logged_in?(session)
       @student = Student.new(params[:student])
       if @student.save
+        Sessions.log_in(@student, session)
         flash[:message] = "Your account was created successfully!"
+        redirect to '/labs'
       else
         @errors = @student.errors
-        erb :'students/new'
+        erb :'/students/new'
       end 
     else
       flash[:message] = "You already have an account!"
-      redirect to '/'
+      redirect to '/labs'
     end
   end
   
@@ -40,7 +42,7 @@ class StudentsController < ApplicationController
         erb :'/students/edit'
       else
         flash[:message] = "You must be account owner to edit!"
-        redirect to '/'
+        redirect to '/labs'
       end
     else
       flash[:message] = "Please sign in to edit!"

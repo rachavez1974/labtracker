@@ -2,16 +2,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="stylesheets/students/forms.css" type="text/css">
+<link rel="stylesheet" href="/stylesheets/students/forms.css" type="text/css">
     <title></title>
 </head>
 <body>
     <div class="container">
-      <% if @errors %>
-        <% @errors.each do |key, error| %>
-          <p style="margin: 0px;"><%= key %>: <%= error %> </p>
-        <%end %>
-      <% end %>
+      <%= erb :'partials/errors' %>
       <form action="/signup" method="POST" style="border:1px solid #ccc">
         <label for="fname">Student Name</label>
         <input type="text" id="name" name="student[name]" placeholder="Your name..">
@@ -20,9 +16,9 @@
         <input type="text" id="user_name" name="student[user_name]" placeholder="Your email">
 
         <label for="year">Current Year</label>
-        <select id="year" name="class_year">
+        <select id="year" name="student[class_year]">
           <% Student.class_years.keys.to_a.each do |year| %>
-          <option value="a"><%= year %></option>
+          <option value="<%= year %>" > <%= year %></option>
           <% end %>
         </select>
         <label for="Password"></label>

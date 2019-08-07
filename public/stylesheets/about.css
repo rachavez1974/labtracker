@@ -1,0 +1,18 @@
+.container {
+  background-image: url("/images/science_background.jpeg");
+
+}
+
+h1 {
+  font-weight: 300px;
+  color: white;
+  margin: auto;
+  padding: 10px;
+}
+
+p{
+  font-weight: 250px;
+  color: green;
+  margin: auto;
+  padding: 10px;
+}

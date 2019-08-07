@@ -7,6 +7,12 @@ class LabsController < ApplicationController
     end  
   end
 
+  #only hit database once per request
+  exclude_routes = %w[/labs /labs/new]
+  before do
+    @lab = Lab.find_by(id: get_id_from_path(request.path_info)) unless exclude_routes.include?(request.path_info)
+  end
+
   # GET: /labs
   get "/labs" do
     if Sessions.is_logged_in?(session)
@@ -65,4 +71,15 @@ class LabsController < ApplicationController
   delete "/labs/:id/delete" do
     redirect "/labs"
   end
+
+  private
+    def get_id_from_path(path)
+      #if an edit request than is different than any other request.
+      if path.include?("edit")
+        path.split('/')[-2].to_i
+      else
+        path.split('/').last.to_i
+      end
+    end
+
 end

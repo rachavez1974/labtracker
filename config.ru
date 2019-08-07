@@ -6,6 +6,7 @@ end
 use Rack::MethodOverride
 
 run ApplicationController
+use LabsController
 use SessionsController
 use StudentsController
 use StaticPagesController

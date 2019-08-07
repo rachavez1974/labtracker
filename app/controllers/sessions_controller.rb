@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     @student = Student.find_by(user_name: params[:user_name])
     if @student && @student.authenticate(params[:password])
       Sessions.log_in(@student, session)
-      redirect to "/students/#{@student.id}"
+      redirect to "/labs"
     else
       flash[:message] = "Wrong user name or password!"
       erb :'/sessions/new.html'

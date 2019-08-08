@@ -68,7 +68,7 @@ li a {
   color: #666;
   text-align: center;
   padding: 14px 16px;
-  margin: 0 20px 0 20px;
+  margin: 0 10px 0 10px;
   text-decoration: none;
 }
 
@@ -160,7 +160,7 @@ li a.active {
 /*drop-menu css */
 .dropdown {
   position: relative;
-  display: inline-block;
+  display: block;
 }
 
 .dropdown-content {
@@ -173,7 +173,7 @@ li a.active {
 
 .dropdown-content a {
   color: black;
-  padding: 12px 16px;
+  padding: px 16px;
   text-decoration: none;
   display: block;
 }

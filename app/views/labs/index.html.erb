@@ -11,22 +11,25 @@
 <table>
     <%= erb :'partials/errors' %>
     <tr>
-    <th>Lab's Name</th>
-    <th>Lab's Description</th>
-    <th>Lab's Teacher</th>
-    <th>Lab's Experiments</th>
-    <tr>
+      <th>Lab's Name</th>
+      <th>Lab's Description</th>
+      <th>Lab's Teacher</th>
+      <th>Lab's Experiments</th>
+    </tr>
     <% @current_student.labs.each do |lab| %>
-    <td><%= lab.name %></td>
-    <td><%= lab.description %></td>
-    <td><%= lab.teacher.name %></td>
-    <td><a href="/experiments/<%= lab.id %>">Experiments</a></td>
-    <td><a class="button" href="/labs/<%= lab.id %>/edit">Edit</a></td>
-    <td><form action='/labs/<%= lab.id %>' method='POST'>
-      <input type='hidden' name='_method' value='DELETE'/>
-    <button type='submit' class='super-sport'>Delete</button></td>
-  </tr>
-  <% end %>
+      <tr>
+        <td><%= lab.name %></td>
+        <td><%= lab.description %></td>
+        <td><%= lab.teacher.name %></td>
+        <td><a href="/experiments/<%= lab.id %>">Experiments</a></td>
+        <td><a class="button" href="/labs/<%= lab.id %>/edit">Edit</a></td>
+        <td><form action="/labs/<%=lab.id%>" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete">
+          </form>
+        </td>
+      </tr>
+    <% end %>
 </table>
 </div>  
 </body>

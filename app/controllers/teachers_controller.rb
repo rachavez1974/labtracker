@@ -28,7 +28,7 @@ class TeachersController < ApplicationController
         if@teacher.save
           @lab.teacher_id = @teacher.id
           @lab.save
-          flash[:message] = "A teache for this lab was created successfully!"
+          flash[:message] = "A teacher for this lab was created successfully!"
           redirect to '/labs'
         else
           erb :"/teachers/new.html"

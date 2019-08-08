@@ -8,7 +8,7 @@
 <body>
     <div class="container">
       <%= erb :'partials/errors' %>
-      <form action="/labs" method="POST" style="border:1px solid #ccc">
+      <form action="/experiments/<%= @lab_id %>" method="POST" style="border:1px solid #ccc">
         <label for="exp_name">Experiment's Name</label>
         <input type="text" id="exp_name_name" name="exp[name]" placeholder="Your exp's name..">
         <label for="description">Experiment's Description</label>

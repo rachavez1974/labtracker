@@ -7,8 +7,9 @@ class ExperimentsController < ApplicationController
   end
 
 
-  get '/experiments/new' do
+  get '/experiments/new/:lab_id' do
     if Sessions.is_logged_in?(session)
+      @lab_id = params[:lab_id]
       erb :'/experiments/new'
     else
       flash[:message] = "You must be logged-in to create experiments!"
@@ -16,13 +17,29 @@ class ExperimentsController < ApplicationController
     end
   end
 
-  post '/experiments' do
+  post '/experiments/:lab_id' do
     if Sessions.is_logged_in?(session)
-      # lab_student_id = 
+      #get student id from lab and compare it to current_student's id
+      @lab = Lab.find(params[:lab_id]) 
+      if @lab.student_id == @current_student.id
+        @experiment = Experiment.new(params[:exp])
+        if@experiment.save
+          @experiment.lab_id = @lab.id
+          @experiment.save
+          flash[:message] = "An experiment for this lab was created successfully!"
+          redirect to '/labs'
+        else
+          erb :"/teachers/new.html"
+          @errors = @experiment.errors
+        end
+      else
+        flash[:message] = "You must be a lab owner to create experiments!"
+        redirect to '/labs'
+      end
     else
       flash[:message] = "You must be logged-in to create experiments!"
       redirect to '/login'
-    end
+    end 
   end
 
   # GET: /experiments

@@ -36,15 +36,12 @@ class LabsController < ApplicationController
   post "/labs" do
     if Sessions.is_logged_in?(session)
       @lab = Lab.new(params[:lab])
-      @teacher = Teacher.create(params[:teacher])
-      @lab.teacher_id = @teacher.id
       @lab.student_id = @current_student.id
         if @lab.save
           flash[:message] = "Your lab was created successfully!"
           redirect "/labs/#{@lab.id}"
         else
-          #merge both errors from both models
-          @errors = @lab.errors.merge(@teacher.errors)
+          @errors = @lab.errors
           erb :'/labs/new.html'
         end
     else

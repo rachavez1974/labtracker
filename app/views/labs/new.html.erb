@@ -10,14 +10,9 @@
       <%= erb :'partials/errors' %>
       <form action="/labs" method="POST" style="border:1px solid #ccc">
         <label for="labname">Lab's Name</label>
-        <input type="text" id="lab_name" name="lab[name]" placeholder="Your lab's name.." required>
+        <input type="text" id="lab_name" name="lab[name]" placeholder="Your lab's name..">
         <label for="description">Lab's Description</label>
-        <input type="text" id="lab_description" name="lab[description]" placeholder="Your lab's description" required>
-        <label for="teacher">Teacher's Name</label>
-        <input type="text" id="teacher_name" name="teacher[name]" placeholder="Teacher's name...." required>
-        <label for="teacher">Department</label>
-        <input type="text" id="departmet_name" name="teacher[department]" placeholder="Teacher's name...." required>
-
+        <input type="text" id="lab_description" name="lab[description]" placeholder="Your lab's description">
         <input type="submit" value="Submit">
       </form>
     </div>

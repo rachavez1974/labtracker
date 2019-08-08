@@ -16,7 +16,7 @@
   <tr>
   <td><%= @lab.name %></td>
   <td><%= @lab.description %></td>
-  <td>$100</td>
+  <td><%= @lab.teacher.name %></td>
   <td><a class="button" href="/labs/<%= @lab.id %>/edit">Edit</a></td>
   <td><form action='/labs/<%= @lab.id %>' method='POST'>
       <input type='hidden' name='_method' value='DELETE'/>

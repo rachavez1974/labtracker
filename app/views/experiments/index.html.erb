@@ -9,18 +9,18 @@
 <div>
 <table>
     <%= erb :'partials/errors' %>
-    <% @experiments.each do |experiment| %>
-  <tr>
-    <th>Experiment's Name</th>
-    <th>Experiment's Description</th>
-    <th>Lab's Name</th>
-    <th>Teacher's Name</th>
+      <th>Experiment's Name</th>
+      <th>Experiment's Description</th>
+      <th>Lab's Name</th>
+      <th>Teacher's Name</th>
     <tr>
-    <td><%= experiment.name %></td>
-    <td><%= experiment.description %></td>
-    <td><%= experiment.lab.name %></td>
-    <td><%= experiment.lab.teacher.name %></td>
-  </tr>
+    <% @experiments.each do |experiment| %>
+    <tr>
+      <td><%= experiment.name %></td>
+      <td><%= experiment.description %></td>
+      <td><%= experiment.lab.name %></td>
+      <td><%= experiment.lab.teacher.name %></td>
+    </tr>
   <% end %>  
 </table>
 </div>  

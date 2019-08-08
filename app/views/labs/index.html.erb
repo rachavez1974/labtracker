@@ -10,13 +10,13 @@
 <div>
 <table>
     <%= erb :'partials/errors' %>
-    <% @current_student.labs.each do |lab| %>
     <tr>
     <th>Lab's Name</th>
     <th>Lab's Description</th>
     <th>Lab's Teacher</th>
     <th>Lab's Experiments</th>
     <tr>
+    <% @current_student.labs.each do |lab| %>
     <td><%= lab.name %></td>
     <td><%= lab.description %></td>
     <td><%= lab.teacher.name %></td>

@@ -1,6 +1,5 @@
 class LabsController < ApplicationController
   #only hit database once per request
-  
   before do
     if Sessions.is_logged_in?(session)
       @current_student = Sessions.current_student(session)

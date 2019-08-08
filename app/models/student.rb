@@ -2,6 +2,8 @@ class Student < ActiveRecord::Base
   
   has_many :labs
   has_many :teachers, through: :labs
+  has_many :experiments, through: :labs
+
   enum class_year: [:Freshman, :Sophomore, :Junior, :Senior]
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   has_secure_password

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/stylesheets/labs/labdisplay.css" type="text/css">
+</head>
+<body>
+<div>
+<table>
+    <%= erb :'partials/errors' %>
+    <% @experiments.each do |experiment| %>
+  <tr>
+    <th>Experiment's Name</th>
+    <th>Experiment's Description</th>
+    <th>Lab's Name</th>
+    <th>Teacher's Name</th>
+    <tr>
+    <td><%= experiment.name %></td>
+    <td><%= experiment.description %></td>
+    <td><%= experiment.lab.name %></td>
+    <td><%= experiment.lab.teacher.name %></td>
+  </tr>
+  <% end %>  
+</table>
+</div>  
+</body>
+</html>

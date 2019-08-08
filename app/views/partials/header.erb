@@ -3,6 +3,7 @@
     <li><a class="active" href="/">LabTracker</a></li>
     <li><a href="/">Home</a></li>
     <li><div class="dropdown"><a href="#news">Labs</a><%= erb :'partials/dropdown_labs' %></div></li>
+    <li><div class="dropdown"><a href="#exps">Experiments</a><%= erb :'partials/dropdown_exps' %></div></li>
     <li><a href="/contact">Contact</a></li>
     <li><a href="/about">About</a></li>
     <% if Sessions.is_logged_in?(session)%>

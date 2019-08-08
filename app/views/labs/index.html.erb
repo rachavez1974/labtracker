@@ -20,11 +20,15 @@
       <tr>
         <td><%= lab.name %></td>
         <td><%= lab.description %></td>
-        <td><%= lab.teacher.name %></td>
-        <% if !lab.experiments.empty? %>
-        <td><a href="/experiments/<%= lab.id %>">Experiments</a></td>
+        <% if !lab.teacher.nil? %>
+          <td><%= lab.teacher.name %></td>
         <% else %>
-          <a href="/experiments/new"></a>
+          <td><a href="/teachers/new/<%= lab.id %>">Add Teacher</a></td>
+        <% end %>
+        <% if !lab.experiments.empty? %>
+          <td><a href="/experiments/<%= lab.id %>">Exp</a></td>
+        <% else %>
+          <td><a href="/experiments/new/<%= lab.id %>">Add Exp</a></td>
         <% end %>
         <td><a class="button" href="/labs/<%= lab.id %>/edit">Edit</a></td>
         <td><form action="/labs/<%=lab.id%>" method="post">

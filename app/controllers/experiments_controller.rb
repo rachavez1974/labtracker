@@ -6,6 +6,25 @@ class ExperimentsController < ApplicationController
     end  
   end
 
+
+  get '/experiments/new' do
+    if Sessions.is_logged_in?(session)
+      erb :'/experiments/new'
+    else
+      flash[:message] = "You must be logged-in to create experiments!"
+      redirect to '/login'
+    end
+  end
+
+  post '/experiments' do
+    if Sessions.is_logged_in?(session)
+      # lab_student_id = 
+    else
+      flash[:message] = "You must be logged-in to create experiments!"
+      redirect to '/login'
+    end
+  end
+
   # GET: /experiments
   get "/experiments/:lab_id" do
     if Sessions.is_logged_in?(session)

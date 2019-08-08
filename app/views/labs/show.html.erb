@@ -16,7 +16,11 @@
   <tr>
   <td><%= @lab.name %></td>
   <td><%= @lab.description %></td>
-  <td><%= @lab.teacher.name %></td>
+    <% if !@lab.teacher.nil?%>
+      <td><%= @lab.teacher.name %></td>
+    <% else %>
+      <td><a href="/teachers/new/<%= @lab.id %>">Add Teacher</a></td>
+    <% end %>
   <td><a class="button" href="/labs/<%= @lab.id %>/edit">Edit</a></td>
   <td><form action='/labs/<%= @lab.id %>' method='POST'>
       <input type='hidden' name='_method' value='DELETE'/>

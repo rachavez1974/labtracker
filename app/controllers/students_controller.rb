@@ -56,7 +56,7 @@ class StudentsController < ApplicationController
         if @student.update(params[:student])
             redirect to "/students/#{@student.id}"
         else
-            @errors = @student.errors.values.flatten
+            @errors = @student.errors
             erb :'/students/edit'
         end
       else
